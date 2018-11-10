@@ -31,7 +31,7 @@ public class ThreadDemo {
 
       try {
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 20; i++) {
 
           System.out.println(threadName + " loop at " + i);
 
@@ -64,8 +64,8 @@ public class ThreadDemo {
       System.out.println(threadName + " start.");
 
       try {
-
-        bt.join();
+        // 最多等bt 线程3s，时间到后at 继续执行join 后面的代码
+        bt.join(3000);
 
         System.out.println(threadName + " end.");
       } catch (Exception e) {
@@ -93,33 +93,33 @@ public class ThreadDemo {
     }
   }
 
-  //    public static void main(String[] args) {
-  //
-  //        String threadName = Thread.currentThread().getName();
-  //
-  //        System.out.println(threadName + " start.");
-  //
-  //        BThread bt = new BThread();
-  //
-  //        AThread at = new AThread(bt);
-  //
-  //        try{
-  //
-  //            bt.start();
-  //
-  //            Thread.sleep(2000);
-  //
-  //            at.start();
-  //
-  //            at.join();
-  //
-  //        } catch(Exception e) {
-  //
-  //            System.out.println("Exception from main");
-  //
-  //        }
-  //
-  //        System.out.println(threadName + " end!");
-  //
-  //    }
+      public static void main(String[] args) {
+
+          String threadName = Thread.currentThread().getName();
+
+          System.out.println(threadName + " start.");
+
+          BThread bt = new BThread();
+
+          AThread at = new AThread(bt);
+
+          try{
+
+              bt.start();
+
+              Thread.sleep(2000);
+
+              at.start();
+
+              at.join();
+
+          } catch(Exception e) {
+
+              System.out.println("Exception from main");
+
+          }
+
+          System.out.println(threadName + " end!");
+
+      }
 }

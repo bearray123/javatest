@@ -11,7 +11,7 @@ public class Worker implements Callable<String> {
 
 
     public String call() throws Exception {
-        System.out.printf("线程" + Thread.currentThread().getName() + "开始执行!\n");
+        System.out.printf("线程" + Thread.currentThread().getName() + " 开始执行!\n");
 
         String result = "execute result is ok!";
 
@@ -28,7 +28,7 @@ public class Worker implements Callable<String> {
             }
         }
 
-        System.out.printf("线程" + Thread.currentThread().getName() + "执行完毕\n");
+        System.out.printf("线程" + Thread.currentThread().getName() + " 执行完毕\n");
         return result;
     }
 }
